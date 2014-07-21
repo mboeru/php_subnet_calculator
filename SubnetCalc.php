@@ -4,6 +4,7 @@ Copyright 06/25/2003 Raymond Ferguson ferguson_at_share-foo.com.
 Released under GNU GPL.
 Special thanks to krischan at jodies.cx for ipcalc.pl http://jodies.de/ipcalc
 The presentation and concept was mostly taken from ipcalc.pl.
+Modified by Marius Boeru <mboeru@gmail.com>
 -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 		"http://www.w3.org/TR/html4/loose.dtd">
@@ -12,40 +13,36 @@ The presentation and concept was mostly taken from ipcalc.pl.
   <title>PHP Subnet Calculator</title>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <meta name="GENERATOR" content="Quanta Plus">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css" name="bootstrap">
+  <script src="js/bootsrap.min.js" type="text/javascript" name="bsjs"></script>
 </head>
 <body bgcolor="#D3D3D3">
-<center>
-<form method="post" action="<?php print $_SERVER['PHP_SELF'] ?> ">
-<BR><BR>
-<table width="95%" align=center cellpadding=2 cellspacing=2 border=0>
-  <tr><td align="center" bgcolor="#999999">
-     <b><A HREF="http://sourceforge.net/projects/subntcalc/">PHP Subnet Calculator</A></b>
-  </td></tr>
-</table>
-<BR>
-<table>
-  <tr>
-        <td>IP &amp; Mask or CIDR:&nbsp;&nbsp;&nbsp;</td>
-        <td><input type="text" name="my_net_info" value="" size="31" maxlength="32"></td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Calculate" name="subnetcalc">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;</td>
-  </tr>
-</table></form><br>
+<div class="container">
+
+ <div class="row">
+ 	<h1><a target="_blank" href="http://sourceforge.net/projects/subntcalc/">PHP Subnet Calculator</a></h1>
+		<div class="form-group">
+			<form method="post" action="<?php print $_SERVER['PHP_SELF'] ?> " class="form-inline" role="form">
+				<label for="exampleInputEmail1">IP &amp; Mask or CIDR:</label>
+				<input type="text" name="my_net_info" value="" type="email" class="form-control" autofocus="autofocus">
+				<input type="submit" class="btn btn-default" value="Calculate" name="subnetcalc">
+			</form>
+		</div>
+
+<br>
 
 <?php
 //Start table
-print "<table cellpadding=\"2\">\n<COL span=\"4\" align=\"left\">\n" ;
+print "<table class=\"table table-condensed\">";
 
-$end='</table><br><br><br><br><br><table width="95%" align=center cellpadding=2 cellspacing=2 border=0>
-      <tr><td bgcolor="#999999"></td><tr><td align="center"><a href="http://validator.w3.org/check/referer">
-      <img border="0" src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01!" height="31" width="88"></a>
-      </td></tr></table></center></body></html>';
+  $end='</table><a href="http://validator.w3.org/check/referer">
+      <img border="0" src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01!" height="31" width="88"></a></div></div></body></html>';
 
 if (empty($_POST['my_net_info'])){
-	tr('Use IP & CIDR Netmask:&nbsp;', '10.0.0.1/22');
-	tr('Or IP & Netmask:','10.0.0.1 255.255.252.0');
-	tr('Or IP & Wildcard Mask:','10.0.0.1 0.0.3.255');
+	tr('success','Use IP & CIDR Netmask:&nbsp;', '10.0.0.1/22');
+	tr('success','Or IP & Netmask:','10.0.0.1 255.255.252.0');
+	tr('success','Or IP & Wildcard Mask:','10.0.0.1 0.0.3.255');
 	print $end ;
 	exit ;
 }
@@ -54,10 +51,10 @@ $my_net_info=rtrim($_POST['my_net_info']) ;
 
 
 if(! preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}(( ([0-9]{1,3}\.){3}[0-9]{1,3})|(\/[0-9]{1,2}))$/',$my_net_info) ) {
-	tr("<span style=\"color: red;\">Invalid Input.</span>");
-	tr('Use IP & CIDR Netmask:&nbsp;', '10.0.0.1/22');
-	tr('Or IP & Netmask:','10.0.0.1 255.255.252.0');
-	tr('Or IP & Wildcard Mask:','10.0.0.1 0.0.3.255');
+	tr("danger","<span style=\"color: red;\">Invalid Input.</span>","");
+	tr("danger",'Use IP & CIDR Netmask:&nbsp;', '10.0.0.1/22');
+	tr("danger",'Or IP & Netmask:','10.0.0.1 255.255.252.0');
+	tr("danger",'Or IP & Wildcard Mask:','10.0.0.1 0.0.3.255');
 	print $end ;
 	exit ;
 }
@@ -66,7 +63,7 @@ if (preg_match("/\//", $my_net_info , $matches)) {
 	$dq_host = strtok("$my_net_info", "/");
 	$cdr_nmask = strtok("/");
 	if (!($cdr_nmask >= 0 && $cdr_nmask <= 32)){
-		tr("Invalid CIDR value. Try an integer 0 - 32.");
+		tr("danger","Invalid CIDR value. Try an integer 0 - 32.");
 		print "$end";
 		exit ;
 	}
@@ -141,21 +138,21 @@ if (preg_match("/^(00001010)|(101011000001)|(1100000010101000)/", $bin_net)) {
 }
 
 // Print Results
-tr('Address:',"<font color=\"blue\">$dq_host</font>",
+tr('active','Address:',"<font color=\"blue\">$dq_host</font>",
 	'<font color="brown">'.dotbin($bin_host,$cdr_nmask).'</font>');
-tr('Netmask:','<font color="blue">'.bintodq($bin_nmask)." = $cdr_nmask</font>",
+tr('active','Netmask:','<font color="blue">'.bintodq($bin_nmask)." = $cdr_nmask</font>",
 	'<font color="red">'.dotbin($bin_nmask, $cdr_nmask).'</font>');
-tr('Wildcard:', '<font color="blue">'.bintodq($bin_wmask).'</font>',
+tr('active','Wildcard:', '<font color="blue">'.bintodq($bin_wmask).'</font>',
 	'<font color="brown">'.dotbin($bin_wmask, $cdr_nmask).'</font>');
-tr('Network:', '<font color="blue">'.bintodq($bin_net).'</font>',
-	"<font color=\"brown\">$dotbin_net</font>","<font color=\"Green\">(Class $class)</font>");
-tr('Broadcast:','<font color="blue">'.bintodq($bin_bcast).'</font>',
+tr('active','Network:', '<font color="blue">'.bintodq($bin_net).'</font>',
+	"<font color=\"brown\">$dotbin_net</font> <font color=\"green\">(Class $class)</font>");
+tr('active','Broadcast:','<font color="blue">'.bintodq($bin_bcast).'</font>',
 	'<font color="brown">'.dotbin($bin_bcast, $cdr_nmask).'</font>');
-tr('HostMin:', '<font color="blue">'.bintodq($bin_first).'</font>',
+tr('active','HostMin:', '<font color="blue">'.bintodq($bin_first).'</font>',
 	'<font color="brown">'.dotbin($bin_first, $cdr_nmask).'</font>');
-tr('HostMax:', '<font color="blue">'.bintodq($bin_last).'</font>',
+tr('active','HostMax:', '<font color="blue">'.bintodq($bin_last).'</font>',
 	'<font color="brown">'.dotbin($bin_last, $cdr_nmask).'</font>');
-@tr('Hosts/Net:', '<font color="blue">'.$host_total.'</font>', "$special");
+@tr('active','Hosts/Net:', '<font color="blue">'.$host_total." ".$special.'</font>',"");
 print "$end";
 
 function binnmtowm($binin){
@@ -219,8 +216,9 @@ function inttobin ($intin) {
 }
 
 function tr(){
-	echo "\t<tr>";
-	for($i=0; $i<func_num_args(); $i++) echo "<td>".func_get_arg($i)."</td>";
+	$state=func_get_arg(0);
+	echo "\t<tr class=\"$state\">";
+	for($i=1; $i<func_num_args(); $i++) echo "<td>".func_get_arg($i)."</td>";
 	echo "</tr>\n";
 }
 ?>

@@ -10,6 +10,7 @@ The original code was written by Raymond Ferguson , so all credits goes
 to him .<br>
 I made a few modifications on the code , now it is also compatible
 with&nbsp; PHP &gt;= 5.3 .<br>
+mboeru: chaged design. Implemented Bootstrap
 <br>
 Note :<br>
 Although this script isn't perfect , it can help out to quickly
