@@ -22,7 +22,7 @@ Modified by Marius Boeru <mboeru@gmail.com>
 <br/>
 <div class="panel panel-default">
  <div class="panel-body">
- 	<h2><span class="glyphicon glyphicon-info-sign"></span> PHP Subnet Calculator</h2>
+ 	<h2><span class="glyphicon glyphicon-info-sign"></span> <a href="<?php print $_SERVER['PHP_SELF'] ?>" >PHP Subnet Calculator</a></h2>
 		<div class="form-group">
 			<form method="post" action="<?php print $_SERVER['PHP_SELF'] ?> " class="form-inline">
 				<label>IP &amp; Mask or CIDR   <span class="glyphicon glyphicon-chevron-right"></span></label>
