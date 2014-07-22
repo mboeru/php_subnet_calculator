@@ -148,7 +148,6 @@ if (  preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}(( ([0-9]{1,3}\.){3}[0-9]{1,3})|(
 	tr('info','HostMax:', '<font color="blue">'.bintodq($bin_last).'</font>',
 		'<font color="brown">'.dotbin($bin_last, $cdr_nmask).'</font>');
 	@tr('warning','Hosts/Net:', '<font color="blue">'.$host_total." ".$special.'</font>',"");
-/*} else if ( preg_match('/^(((?=(?>.*?(::))(?!.+\3)))\3?|([\dA-F]{1,4}(\3|:(?!$)|$)|\2))(?4){5}((?4){2}|(25[0-5]|(2[0-4]|1\d|[1-9])?\d)(\.(?7)){3})\z/i^i', $my_net_info )) { */
 } else if ( valid_ipv6_address($address)) {
 
 	$calc = new IPV6SubnetCalculator();
@@ -171,13 +170,10 @@ if (  preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}(( ([0-9]{1,3}\.){3}[0-9]{1,3})|(
 	}
 
 } else {
-//	if(! preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}(( ([0-9]{1,3}\.){3}[0-9]{1,3})|(\/[0-9]{1,2}))$/',$my_net_info) ) {
 		tr("danger","<span style=\"color: red;\">Invalid Input.</span>","");
 		tr("danger",'Use IP & CIDR Netmask:&nbsp;', '10.0.0.1/22');
 		tr("danger",'Or IP & Netmask:','10.0.0.1 255.255.252.0');
 		tr("danger",'Or IP & Wildcard Mask:','10.0.0.1 0.0.3.255');
-//		print $end ;
-		exit ;
 }
 
 
