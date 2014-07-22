@@ -21,7 +21,7 @@ Modified by Marius Boeru <mboeru@gmail.com>
 <div class="container">
 
  <div class="row">
- 	<h1><span class="glyphicon glyphicon-info-sign"></span> <a target="_blank" href="http://sourceforge.net/projects/subntcalc/">PHP Subnet Calculator</a></h1>
+ 	<h2><span class="glyphicon glyphicon-info-sign"></span> PHP Subnet Calculator</h2>
 		<div class="form-group">
 			<form method="post" action="<?php print $_SERVER['PHP_SELF'] ?> " class="form-inline">
 				<label>IP &amp; Mask or CIDR   <span class="glyphicon glyphicon-chevron-right"></span></label>
