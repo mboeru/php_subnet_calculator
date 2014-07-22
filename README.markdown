@@ -18,6 +18,8 @@ calculate subnet-shemas ( number of hosts , broadcast domain , network
 id ) .<br>
 Bugs :&nbsp; Even if&nbsp; you try to resolve a Class C with an
 CIDR&nbsp; lower than 24&nbsp; , let say 18 , it will calculate output .<br>
+
+Added IPV6 support from https://github.com/benburkhart1/ipv6-subnet-calculator
 <br>
 </body>
 </html>
