@@ -19,8 +19,9 @@ Modified by Marius Boeru <mboeru@gmail.com>
 </head>
 <body bgcolor="#D3D3D3">
 <div class="container">
-
- <div class="row">
+<br/>
+<div class="panel panel-default">
+ <div class="panel-body">
  	<h2><span class="glyphicon glyphicon-info-sign"></span> PHP Subnet Calculator</h2>
 		<div class="form-group">
 			<form method="post" action="<?php print $_SERVER['PHP_SELF'] ?> " class="form-inline">
@@ -29,6 +30,8 @@ Modified by Marius Boeru <mboeru@gmail.com>
 				<input type="submit" class="btn btn-default" value="Calculate" name="subnetcalc">
 			</form>
 		</div>
+</div>
+<div class="panel-body">
 
 <br>
 
@@ -37,13 +40,14 @@ Modified by Marius Boeru <mboeru@gmail.com>
 require_once 'functions.php';
 print "<table class=\"table table-condensed\">";
 
-  $end='</table><a href="http://validator.w3.org/check/referer">
-      <img border="0" src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01!" height="31" width="88"></a></div></div></body></html>';
+  $end='</table></div></div><center><a href="http://validator.w3.org/check/referer">
+      <img border="0" src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01!" height="31" width="88"></a></center></div></body></html>';
 
 if (empty($_POST['my_net_info'])){
-	tr('success','Use IP & CIDR Netmask:&nbsp;', '10.0.0.1/22');
-	tr('success','Or IP & Netmask:','10.0.0.1 255.255.252.0');
-	tr('success','Or IP & Wildcard Mask:','10.0.0.1 0.0.3.255');
+	tr('info',"","IPv4","IPv6");
+	tr('success','Use IP & CIDR Netmask:&nbsp;', '10.0.0.1/22', "fe80::/10, fe80::, FE80:0000:0000:0000:0202:B3FF:FE1E:8329 ");
+	tr('success','Or IP & Netmask:','10.0.0.1 255.255.252.0', "X");
+	tr('success','Or IP & Wildcard Mask:','10.0.0.1 0.0.3.255', "X");
 	print $end ;
 	exit ;
 }
