@@ -14,7 +14,7 @@ Modified by Marius Boeru <mboeru@gmail.com>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <meta name="GENERATOR" content="Quanta Plus">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css" name="bootstrap">
+  <link rel="stylesheet" href="css/bootstrap.min.css" >
   <!-- <script src="js/bootstrap.min.js" type="text/javascript" name="bsjs"></script> -->
 </head>
 <body bgcolor="#D3D3D3">
@@ -23,9 +23,9 @@ Modified by Marius Boeru <mboeru@gmail.com>
  <div class="row">
  	<h1><span class="glyphicon glyphicon-info-sign"></span> <a target="_blank" href="http://sourceforge.net/projects/subntcalc/">PHP Subnet Calculator</a></h1>
 		<div class="form-group">
-			<form method="post" action="<?php print $_SERVER['PHP_SELF'] ?> " class="form-inline" role="form">
-				<label for="exampleInputEmail1">IP &amp; Mask or CIDR   <span class="glyphicon glyphicon-chevron-right"></span></label>
-				<input type="text" name="my_net_info" value="" type="email" class="form-control" autofocus="autofocus">
+			<form method="post" action="<?php print $_SERVER['PHP_SELF'] ?> " class="form-inline">
+				<label>IP &amp; Mask or CIDR   <span class="glyphicon glyphicon-chevron-right"></span></label>
+				<input type="text" name="my_net_info" value="" class="form-control" autofocus="autofocus">
 				<input type="submit" class="btn btn-default" value="Calculate" name="subnetcalc">
 			</form>
 		</div>
