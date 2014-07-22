@@ -15,16 +15,16 @@ Modified by Marius Boeru <mboeru@gmail.com>
   <meta name="GENERATOR" content="Quanta Plus">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css" name="bootstrap">
-  <script src="js/bootsrap.min.js" type="text/javascript" name="bsjs"></script>
+  <!-- <script src="js/bootstrap.min.js" type="text/javascript" name="bsjs"></script> -->
 </head>
 <body bgcolor="#D3D3D3">
 <div class="container">
 
  <div class="row">
- 	<h1><a target="_blank" href="http://sourceforge.net/projects/subntcalc/">PHP Subnet Calculator</a></h1>
+ 	<h1><span class="glyphicon glyphicon-info-sign"></span> <a target="_blank" href="http://sourceforge.net/projects/subntcalc/">PHP Subnet Calculator</a></h1>
 		<div class="form-group">
 			<form method="post" action="<?php print $_SERVER['PHP_SELF'] ?> " class="form-inline" role="form">
-				<label for="exampleInputEmail1">IP &amp; Mask or CIDR:</label>
+				<label for="exampleInputEmail1">IP &amp; Mask or CIDR   <span class="glyphicon glyphicon-chevron-right"></span></label>
 				<input type="text" name="my_net_info" value="" type="email" class="form-control" autofocus="autofocus">
 				<input type="submit" class="btn btn-default" value="Calculate" name="subnetcalc">
 			</form>
@@ -138,9 +138,9 @@ if (preg_match("/^(00001010)|(101011000001)|(1100000010101000)/", $bin_net)) {
 }
 
 // Print Results
-tr('active','Address:',"<font color=\"blue\">$dq_host</font>",
+tr('info','Address:',"<font color=\"blue\">$dq_host</font>",
 	'<font color="brown">'.dotbin($bin_host,$cdr_nmask).'</font>');
-tr('active','Netmask:','<font color="blue">'.bintodq($bin_nmask)." = $cdr_nmask</font>",
+tr('info','Netmask:','<font color="blue">'.bintodq($bin_nmask)." = $cdr_nmask</font>",
 	'<font color="red">'.dotbin($bin_nmask, $cdr_nmask).'</font>');
 tr('active','Wildcard:', '<font color="blue">'.bintodq($bin_wmask).'</font>',
 	'<font color="brown">'.dotbin($bin_wmask, $cdr_nmask).'</font>');
@@ -148,11 +148,11 @@ tr('active','Network:', '<font color="blue">'.bintodq($bin_net).'</font>',
 	"<font color=\"brown\">$dotbin_net</font> <font color=\"green\">(Class $class)</font>");
 tr('active','Broadcast:','<font color="blue">'.bintodq($bin_bcast).'</font>',
 	'<font color="brown">'.dotbin($bin_bcast, $cdr_nmask).'</font>');
-tr('active','HostMin:', '<font color="blue">'.bintodq($bin_first).'</font>',
+tr('info','HostMin:', '<font color="blue">'.bintodq($bin_first).'</font>',
 	'<font color="brown">'.dotbin($bin_first, $cdr_nmask).'</font>');
-tr('active','HostMax:', '<font color="blue">'.bintodq($bin_last).'</font>',
+tr('info','HostMax:', '<font color="blue">'.bintodq($bin_last).'</font>',
 	'<font color="brown">'.dotbin($bin_last, $cdr_nmask).'</font>');
-@tr('active','Hosts/Net:', '<font color="blue">'.$host_total." ".$special.'</font>',"");
+@tr('warning','Hosts/Net:', '<font color="blue">'.$host_total." ".$special.'</font>',"");
 print "$end";
 
 function binnmtowm($binin){
